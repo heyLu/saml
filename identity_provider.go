@@ -644,6 +644,34 @@ func (DefaultAssertionMaker) MakeAssertion(req *IdpAuthnRequest, session *Sessio
 		}
 	}
 
+	attributes = append(attributes, Attribute{
+		FriendlyName: "email",
+		Name:         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+		NameFormat:   "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+		Values: []AttributeValue{{
+			Type:  "xs:string",
+			Value: session.UserEmail,
+		}},
+	})
+	attributes = append(attributes, Attribute{
+		FriendlyName: "givenname",
+		Name:         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
+		NameFormat:   "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+		Values: []AttributeValue{{
+			Type:  "xs:string",
+			Value: session.UserGivenName,
+		}},
+	})
+	attributes = append(attributes, Attribute{
+		FriendlyName: "surname",
+		Name:         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname",
+		NameFormat:   "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+		Values: []AttributeValue{{
+			Type:  "xs:string",
+			Value: session.UserSurname,
+		}},
+	})
+
 	if session.UserName != "" {
 		attributes = append(attributes, Attribute{
 			FriendlyName: "uid",

@@ -1,0 +1,20 @@
+[
+	{
+		"name": "alice",
+		"groups": ["Administrators", "Users"],
+		"email": "alice@example.com",
+		"common_name": "Alice Smith",
+		"surname": "Smith",
+		"given_name": "Alice",
+		"hashed_password": "JDJiJDEwJEtOSFJSTTBEeG1VSHNaQzhMMlovbi5UaHZlY2w5VEdaSzYxN2FDTFZNeFJscUN6TWNzcnhPCg=="
+	},
+	{
+		"name": "bob",
+		"groups": ["Users"],
+		"email": "bob@example.com",
+		"common_name": "Bob Smith",
+		"surname": "Smith",
+		"given_name": "Bob",
+		"hashed_password": "JDJiJDEwJEtOSFJSTTBEeG1VSHNaQzhMMlovbi5UaHZlY2w5VEdaSzYxN2FDTFZNeFJscUN6TWNzcnhPCg=="
+	}
+]

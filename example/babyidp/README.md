@@ -4,6 +4,14 @@ A miniscule IDP server that can actually respond to SAML requests.  Based on the
 
 - idp key and idp cert and configurable via environment variables (`IDP_KEY=key.pem` and `IDP_CERT=cert.pem`)
 - users configurable via [`users.json`](./users.json)
+
+	Note that passwords need to be hashed using bcrypt and then base64 encoded because of how [Go parses []byte slices](https://stackoverflow.com/a/31450023) in JSON.
+
+	You can use the following to do that and then use the output as `hashed_password` in `users.json`:
+
+	```bash
+	python -c 'import bcrypt; import getpass; print(bcrypt.hashpw(getpass.getpass(prompt="New password: ", stream=None).encode("utf-8"), bcrypt.gensalt(rounds=10)).decode("utf-8"))' | base64 | tr -d '\n'
+	```
 - SAML client application configurable using `-service http://url.to/saml/metadata.xml`
 
 ## Usage example (with Grist)
